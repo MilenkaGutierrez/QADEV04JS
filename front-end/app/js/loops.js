@@ -22,16 +22,40 @@ var isCapicua = function(number){
 }
 
 
+var reverseString = function(str){
+    var rev='';
+    for(var i=str.length-1;i>=0;i--){
+        rev += str[i];
+    }
+    return console.log(str, ', reversed is: ', rev);
+}
+
+
+var truncateWord = function(str,num){
+    var trunc='';
+    var count=0;
+    do{
+        trunc += str[count];
+        count=count+1;
+    }while(count<num);
+    return console.log(str, ',truncated in ',num,' positions is: ', trunc);
+}
+
+
 var getPares = function(quantity){
     var counter = 0;
     var number =1;
     var array = new Array(quantity);
-    do{
-        if(isPar(number)) {
-            array[counter] = number;
-            counter=counter+1;
+    do {
+        if(!isPar(number)) {
+            number=number+1;
+            continue;
         }
-        number=number+1;
+        else {
+            array[counter] = number;
+            counter = counter + 1;
+            number=number+1;
+        }
     }while(counter<quantity)
     console.log(array.join());
 }
@@ -41,11 +65,15 @@ var getImpares = function(quantity){
     var number =1;
     var array = new Array(quantity);;
     do{
-        if(!isPar(number)) {
-            array[counter] = number;
-            counter=counter+1;
+        if(isPar(number)) {
+            number=number+1;
+            continue;
         }
-        number=number+1;
+        else {
+            array[counter] = number;
+            counter = counter + 1;
+            number=number+1;
+        }
     }while(counter<quantity)
     console.log(array.toString());
 }
